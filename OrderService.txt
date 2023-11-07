@@ -1,0 +1,19 @@
+// OrderService
+
+import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String getUserData(String userId) {
+        String userServiceUrl = "http://user-service/users"; // Assuming 'user-service' is the hostname for the UserService
+        return restTemplate.getForObject(userServiceUrl, String.class);
+    }
+
+    // Rest of the OrderService logic
+}
